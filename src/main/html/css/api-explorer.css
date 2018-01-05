@@ -1502,24 +1502,10 @@ body {
     }
 }
 
-.language-switcher {
-    top: 0;
-    right: 0;
-    width: 50%;
-    z-index: 1;
-    height: 40px;
-    position: fixed;
-    background: #5c666f;
-}
-
 @media (min-width: 992px) {
     .swagger-section #resources_container {
         width: 100%;
         padding-left: 290px;
-    }
-
-    .language-switcher {
-        right: -145px;
     }
 }
 
@@ -1527,36 +1513,6 @@ body {
     .swagger-section #resources_container {
         padding-left: 320px;
     }
-
-    .language-switcher {
-        right: -160px;
-    }
-}
-
-.language-switcher #menu {
-    margin: 0;
-    padding: 0;
-}
-
-.language-switcher #menu li {
-    display: inline;
-}
-
-.language-switcher #menu .language-button {
-    float: left;
-    height: 40px;
-    width: 100px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 20px;
-    line-height: 35px;
-    text-align: center;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-}
-
-.language-switcher #menu .language-button.selected {
-    background: #333;
 }
 
 .swagger-section .implementation-notes {
@@ -1596,7 +1552,7 @@ body {
 @media (min-width: 992px) {
     .swagger-section #resources {
         width: 100%;
-        transition: width 300ms
+        transition: width 300ms ease-out;
     }
 
     .swagger-section #resources .operation .content {

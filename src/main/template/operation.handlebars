@@ -31,8 +31,7 @@
             <form accept-charset="UTF-8" class="sandbox">
 
                 {{#if parameters}}
-                    <h4 data-control data-parm-toggle data-toggle="collapse"
-                        data-target="#parm-{{parentId}}_{{nickname}}">
+                    <h4 data-control>
                         Parameters
                     </h4>
 
@@ -41,13 +40,9 @@
 
                 {{/if}}
 
-                <h4 data-control data-toggle="collapse" data-target="#test-{{parentId}}_{{nickname}}">
-                    Test this endpoint
-                </h4>
-
                 <div id="test-{{parentId}}_{{nickname}}">
-                    <div class="sandbox_header collapse in" data-content>
-                        <input class="submit btn btn-primary" name="commit" type="submit" value="Try"
+                    <div class="sandbox_header in" data-content>
+                        <input class="submit btn btn-primary" name="commit" type="submit" value="Test this endpoint"
                                data-target="#get_clients-modal-request">
                         <a href="#" class="response_hider hide" style="display: inline;">Hide Response</a>
                         <!--small class="curl-copy-message hide" style="display:none;">Copied to clipboard</small-->
