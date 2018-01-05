@@ -1503,11 +1503,12 @@ body {
 }
 
 .language-switcher {
+    top: 0;
     right: 0;
     width: 50%;
     z-index: 1;
     height: 40px;
-    position: absolute;
+    position: fixed;
     background: #5c666f;
 }
 
@@ -1532,11 +1533,6 @@ body {
     }
 }
 
-.fixed .language-switcher {
-    top: 0;
-    position: fixed;
-}
-
 .language-switcher #menu {
     margin: 0;
     padding: 0;
@@ -1557,6 +1553,10 @@ body {
     text-align: center;
     letter-spacing: .08em;
     text-transform: uppercase;
+}
+
+.language-switcher #menu .language-button.selected {
+    background: #333;
 }
 
 .swagger-section .implementation-notes {
@@ -1863,7 +1863,8 @@ body {
 .swagger-section .swagger-ui-wrap .model-signature {
     /*font-family: proxima-nova, sans-serif;*/
     font-size: 1em;
-    line-height: 1.5em
+    line-height: 1.5em;
+    margin-top: 20px;
 }
 
 .swagger-section .swagger-ui-wrap .model-signature .signature-nav a {

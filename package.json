@@ -30,7 +30,9 @@
   },
   "readmeFilename": "README.md",
   "devDependencies": {
+    "axios": "^0.17.1",
     "chai": "^2.1.0",
+    "cheerio": "^1.0.0-rc.2",
     "cors": "^2.5.3",
     "docco": "^0.7.0",
     "event-stream": "^3.2.2",

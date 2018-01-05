@@ -201,7 +201,6 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
       $('.model-signature', $(this.el)).append(this.model.type);
     }
 
-    console.log('language :: ', this.language.get('selected'));
     // window[this.model.parentId][this.model.nickname].forEach(function(language) {
 
     // });
