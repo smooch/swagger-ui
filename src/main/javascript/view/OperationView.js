@@ -192,7 +192,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     var methodDefs = classDef && classDef[this.nickname] || [];
     var snippetDef = methodDefs
       .filter(function(def) {
-          return def.language === this.language.get('selected');
+          return def.language === language;
       })
       .pop();
 
@@ -209,6 +209,9 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
         id: this.parentId + '_' + this.nickname + '_response'
       });
       $('.model-signature', $(this.el)).append(responseSignatureView.render().el);
+      // $('pre code').each(function(i, block) {
+      //   hljs.highlightBlock(block);
+      // });
     }
 
     if (signatureModel) {
