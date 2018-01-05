@@ -20,8 +20,6 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     this.nickname = this.model.nickname;
     this.model.encodedParentId = encodeURIComponent(this.parentId);
 
-    this.language.bind('change', this.render.bind(this));
-
     return this;
   },
 
@@ -187,32 +185,49 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
         this.addBodyModel(param)
       }
     }
-    var language = this.language && this.language.get && this.language.get('selected') || 'java';
+
     var classDef = window.snippetData && window.snippetData[this.parentId];
     var methodDefs = classDef && classDef[this.nickname] || [];
-    var snippetDef = methodDefs
-      .filter(function(def) {
-          return def.language === language;
-      })
-      .pop();
 
-    if (snippetDef) {
-      responseSignatureView = new SwaggerUi.Views.SignatureView({
-        model: {
-          id: snippetDef.className,
-          type: snippetDef.method,
-          sampleJSON: snippetDef.snippet
-        },
-        router: this.router,
-        tagName: 'div',
-        type: "Response",
-        id: this.parentId + '_' + this.nickname + '_response'
-      });
-      $('.model-signature', $(this.el)).append(responseSignatureView.render().el);
-      // $('pre code').each(function(i, block) {
-      //   hljs.highlightBlock(block);
-      // });
-    }
+    var showSnippet = function () {
+      var language = this.language.get('selected');
+
+      var snippetDef = methodDefs
+        .filter(function (def) {
+          return def.language === language;
+        })
+        .pop();
+
+      if (snippetDef) {
+        var snippetId = this.parentId + '_' + this.nickname + '_snippet';
+        var snippetSignatureView = new SwaggerUi.Views.SignatureView({
+          model: {
+            id: snippetDef.className,
+            type: snippetDef.method,
+            sampleJSON: snippetDef.snippet
+          },
+          router: this.router,
+          tagName: 'div',
+          type: "Response",
+          id: snippetId
+        });
+
+        var snippetSignatureElement = snippetSignatureView.render().el;
+
+        if ($('#' + snippetId).length) {
+          $('#' + snippetId).replaceWith(snippetSignatureElement);
+        } else {
+          $('.model-signature', $(this.el)).append(snippetSignatureElement);
+        }
+
+        // $('pre code').each(function(i, block) {
+        //   hljs.highlightBlock(block);
+        // });
+      }
+    }.bind(this);
+
+    showSnippet();
+    this.language.bind('change', showSnippet);
 
     if (signatureModel) {
       responseSignatureView = new SwaggerUi.Views.SignatureView({
@@ -227,10 +242,6 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
       this.model.responseClassSignature = 'string';
       $('.model-signature', $(this.el)).append(this.model.type);
     }
-
-    // window[this.model.parentId][this.model.nickname].forEach(function(language) {
-
-    // });
 
     ref3 = this.model.parameters;
     for (n = 0, len2 = ref3.length; n < len2; n++) {
