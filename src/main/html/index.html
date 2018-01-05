@@ -41,74 +41,77 @@
     </script>
 
     <script type="text/javascript">
-        $(function () {
-            var url = window.location.search.match(/url=([^&]+)/);
-            if (url && url.length > 1) {
-                url = decodeURIComponent(url[1]);
-            } else {
-                url = window.location.toString().replace(/\/*#?.*/, '/swagger.json');
-            }
+        $.getJSON( "snippet.json", function(data) {
+            window.snippetData = data;
+            $(function () {
+                var url = window.location.search.match(/url=([^&]+)/);
+                if (url && url.length > 1) {
+                    url = decodeURIComponent(url[1]);
+                } else {
+                    url = window.location.toString().replace(/\/*#?.*/, '/swagger.json');
+                }
 
-            window.swaggerUi = new SwaggerUi({
-                url: url,
-                dom_id: "swagger-ui-container",
-                supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
-                onComplete: function (swaggerApi, swaggerUi) {
-                    if (typeof initOAuth == "function") {
+                window.swaggerUi = new SwaggerUi({
+                    url: url,
+                    dom_id: "swagger-ui-container",
+                    supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+                    onComplete: function (swaggerApi, swaggerUi) {
+                        if (typeof initOAuth == "function") {
 
-                        initOAuth({
-                            clientId: "ffe7748a-3a3f-4860-a02a-42ab08e4fde2",
-                            realm: "realm",
-                            appName: "Swagger"
+                            initOAuth({
+                                clientId: "ffe7748a-3a3f-4860-a02a-42ab08e4fde2",
+                                realm: "realm",
+                                appName: "Swagger"
+                            });
+
+                        }
+
+                        $('pre code').each(function (i, e) {
+                            hljs.highlightBlock(e)
                         });
 
+                        if (swaggerUi.options.url) {
+                            $('#input_baseUrl').val(swaggerUi.options.url);
+                        }
+                        if (swaggerUi.options.apiKey) {
+                            $('#input_apiKey').val(swaggerUi.options.apiKey);
+                        }
+
+                        $("[data-toggle='tooltip']").tooltip();
+
+                        addApiKeyAuthorization();
+                    },
+                    onFailure: function (data) {
+                        log("Unable to Load SwaggerUI");
+                    },
+                    docExpansion: "none",
+                    sorter: "alpha"
+                });
+
+                function addApiKeyAuthorization() {
+                    var key = encodeURIComponent($('#input_apiKey')[0].value);
+                    if (key && key.trim() != "") {
+                        var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("Authorization", "Bearer " + key, "header");
+                        window.swaggerUi.api.clientAuthorizations.add("key", apiKeyAuth);
+                        log("added key " + key);
                     }
+                }
 
-                    $('pre code').each(function (i, e) {
-                        hljs.highlightBlock(e)
-                    });
+                $('#input_apiKey').change(addApiKeyAuthorization);
+                // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
+                /*
+                 var apiKey = "myApiKeyXXXX123456789";
+                 $('#input_apiKey').val(apiKey);
+                 */
 
-                    if (swaggerUi.options.url) {
-                        $('#input_baseUrl').val(swaggerUi.options.url);
+                window.swaggerUi.load();
+
+                function log() {
+                    if ('console' in window) {
+                        console.log.apply(console, arguments);
                     }
-                    if (swaggerUi.options.apiKey) {
-                        $('#input_apiKey').val(swaggerUi.options.apiKey);
-                    }
-
-                    $("[data-toggle='tooltip']").tooltip();
-
-                    addApiKeyAuthorization();
-                },
-                onFailure: function (data) {
-                    log("Unable to Load SwaggerUI");
-                },
-                docExpansion: "none",
-                sorter: "alpha"
+                }
             });
-
-            function addApiKeyAuthorization() {
-                var key = encodeURIComponent($('#input_apiKey')[0].value);
-                if (key && key.trim() != "") {
-                    var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("Authorization", "Bearer " + key, "header");
-                    window.swaggerUi.api.clientAuthorizations.add("key", apiKeyAuth);
-                    log("added key " + key);
-                }
-            }
-
-            $('#input_apiKey').change(addApiKeyAuthorization);
-            // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
-            /*
-             var apiKey = "myApiKeyXXXX123456789";
-             $('#input_apiKey').val(apiKey);
-             */
-
-            window.swaggerUi.load();
-
-            function log() {
-                if ('console' in window) {
-                    console.log.apply(console, arguments);
-                }
-            }
         });
     </script>
 
