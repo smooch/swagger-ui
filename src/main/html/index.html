@@ -41,7 +41,7 @@
     </script>
 
     <script type="text/javascript">
-        $.getJSON( "snippet.json", function(data) {
+        $.getJSON( "snippets.json", function(data) {
             window.snippetData = data;
             $(function () {
                 var url = window.location.search.match(/url=([^&]+)/);
@@ -237,4 +237,3 @@
 </section>
 </body>
 </html>
-
