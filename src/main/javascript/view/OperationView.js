@@ -187,6 +187,30 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
         this.addBodyModel(param)
       }
     }
+    var language = this.language && this.language.get && this.language.get('selected') || 'java';
+    var classDef = window.snippetData && window.snippetData[this.parentId];
+    var methodDefs = classDef && classDef[this.nickname] || [];
+    var snippetDef = methodDefs
+      .filter(function(def) {
+          return def.language === this.language.get('selected');
+      })
+      .pop();
+
+    if (snippetDef) {
+      responseSignatureView = new SwaggerUi.Views.SignatureView({
+        model: {
+          id: snippetDef.className,
+          type: snippetDef.method,
+          sampleJSON: snippetDef.snippet
+        },
+        router: this.router,
+        tagName: 'div',
+        type: "Response",
+        id: this.parentId + '_' + this.nickname + '_response'
+      });
+      $('.model-signature', $(this.el)).append(responseSignatureView.render().el);
+    }
+
     if (signatureModel) {
       responseSignatureView = new SwaggerUi.Views.SignatureView({
         model: signatureModel,
