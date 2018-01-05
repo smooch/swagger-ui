@@ -46,7 +46,6 @@ SwaggerUi.Views.ResourceView = Backbone.View.extend({
 
     operation.number = this.number;
 
-    console.log('the language? :: ', this.language.get('selected'));
     // Render an operation and add it to operations li
     var operationView = new SwaggerUi.Views.OperationView({
       model: operation,

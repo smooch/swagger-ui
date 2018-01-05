@@ -9,6 +9,7 @@ SwaggerUi.Views.LanguageSwitcherView = Backbone.View.extend({
   initialize: function() {
     window.onscroll = this.onScroll.bind(this);
     this.onScroll();
+    this.model.bind('change', this.render.bind(this));
   },
 
   onScroll: function() {
@@ -25,10 +26,7 @@ SwaggerUi.Views.LanguageSwitcherView = Backbone.View.extend({
   },
 
   render: function(){
-    $(this.el).html(Handlebars.templates.language_switcher());
-    console.log('this.model.get(\'selected\') :: ', this.model.get('selected'));
-    console.log($(this.model.get('selected')));
-    $(this.model.get('selected')).addClass('selected');
+    $(this.el).html(Handlebars.templates.language_switcher(this.model.attributes));
     return this;
   }
 });
