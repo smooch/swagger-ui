@@ -191,7 +191,6 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
 
     var showSnippet = function () {
       var language = this.language.get('selected');
-
       var snippetDef = methodDefs
         .filter(function (def) {
           return def.language === language;
@@ -200,11 +199,13 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
 
       if (snippetDef) {
         var snippetId = this.parentId + '_' + this.nickname + '_snippet';
-        var snippetSignatureView = new SwaggerUi.Views.SignatureView({
+        var snippetSignatureView = new SwaggerUi.Views.SnippetView({
           model: {
             id: snippetDef.className,
             type: snippetDef.method,
-            sampleJSON: snippetDef.snippet
+            hlId: language,
+            language: language,
+            snippet: snippetDef.snippet
           },
           router: this.router,
           tagName: 'div',

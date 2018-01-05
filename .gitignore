@@ -12,3 +12,4 @@ swagger-ui.sublime-workspace
 node_modules/*
 /nbproject/private/
 dist
+npm-debug.log
