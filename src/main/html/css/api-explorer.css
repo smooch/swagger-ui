@@ -888,11 +888,11 @@
 
 .swagger-section .operations h4:after {
     content: "\E17B";
-    font-family: budicon-font !important;
-    font-style: normal !important;
-    font-weight: 400 !important;
-    font-variant: normal !important;
-    text-transform: none !important;
+    font-family: budicon-font;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
     speak: none;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
@@ -939,11 +939,11 @@
 
 .swagger-section .operations h4:not(.collapsed):after {
     content: "\E17A";
-    font-family: budicon-font !important;
-    font-style: normal !important;
-    font-weight: 400 !important;
-    font-variant: normal !important;
-    text-transform: none !important;
+    font-family: budicon-font;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
     speak: none;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
