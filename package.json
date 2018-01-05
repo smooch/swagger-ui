@@ -21,7 +21,8 @@
     "prejshint": "gulp",
     "jshint": "jshint .",
     "pretest": "npm run jshint",
-    "test": "mocha"
+    "test": "mocha",
+    "clean": "gulp clean"
   },
   "repository": {
     "type": "git",
