@@ -1546,7 +1546,7 @@ body {
 }
 
 .swagger-section #resources .endpoint {
-    transition: opacity 300ms ease-in-out
+    transition: opacity 300ms ease-out;
 }
 
 @media (min-width: 992px) {
@@ -1639,7 +1639,7 @@ body {
     }
 
     .swagger-section #resources.samples-collapsed .samples > * {
-        display: none
+        display: none;
     }
 }
 
@@ -1905,7 +1905,7 @@ body {
 
 .swagger-section .swagger-ui-wrap caption, .swagger-section .swagger-ui-wrap td, .swagger-section .swagger-ui-wrap th {
     text-align: left;
-    font-weight: 400;
+    font-weight: 300;
     vertical-align: middle
 }
 
