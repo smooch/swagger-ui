@@ -120,7 +120,7 @@ header.site-header.site-header{
 }
 .language-switcher #menu .language-button {
     display: block;
-    pointer:cursor;
+    cursor:pointer;
     float: left;
     text-transform: capitalize;
     letter-spacing: normal;
@@ -290,7 +290,7 @@ select.ui-form-control:focus {
 }
 .swagger-section .parameter-item .small-description {
     font-size: 14px;
-    padding-top:3px;
+    padding-top:8px;
 }
 .swagger-section .parameter-item .small-description code {
     font-size: 13px;
@@ -300,6 +300,12 @@ select.ui-form-control:focus {
 .swagger-section .parameter-item .small-description code.code-signature {
     background-color:#e6e7f0;
     color: #464a5c;
+    margin-bottom:3px;
+    display:inline-block;
+    vertical-align:top;
+}
+.swagger-section .parameter-item .small-description .markdown p{
+    margin-top:0;
 }
 .swagger-section .swagger-ui-wrap .required {
     font-weight: 300;
@@ -732,7 +738,7 @@ pre {
     font-size:44px;
     font-weight:300;
     line-height:22px;
-    text-indent: none;
+    text-indent: 0;
     opacity: 1;
     color:#b1bbc7;
     background:none;
@@ -754,15 +760,19 @@ pre {
 #api2-explorer .modal .modal-title .http_method{
     position:relative;
     top:-2px;
-    letter-spacing:0.6em;
+    letter-spacing:0.06em;
 }
 #api2-explorer .modal .modal-content{
     padding-bottom:16px;
 	box-shadow:0 16px 58px rgba(63, 49, 178, .08), 0 4px 14px rgba(63, 49, 178, .04);
 }
 #api2-explorer .modal h5 {
-    color: #464a5c;
+    color: #373352;
     font-size: 13px;
-    font-weight:400;
-    letter-spacing:0.6em;
+    font-weight:500;
+    letter-spacing:0.06em;
+    margin:16px 0 8px 0;
+}
+#api2-explorer .modal .modal-dialog .modal-body {
+    padding-top:0;
 }
