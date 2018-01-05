@@ -7,8 +7,6 @@ SwaggerUi.Views.LanguageSwitcherView = Backbone.View.extend({
   },
 
   initialize: function() {
-    window.onscroll = this.onScroll.bind(this);
-    this.onScroll();
     this.model.bind('change', this.render.bind(this));
   },
 
