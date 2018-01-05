@@ -13,6 +13,7 @@
     <link href='css/standalone.css' rel='stylesheet'/>
     <link href='css/api-explorer.css' rel='stylesheet' type='text/css'/>
     <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+    <link href='css/custom.css' media='screen' rel='stylesheet' type='text/css'/>
 
     <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
     <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
@@ -44,12 +45,7 @@
         $.getJSON( "snippets.json", function(data) {
             window.snippetData = data;
             $(function () {
-                var url = window.location.search.match(/url=([^&]+)/);
-                if (url && url.length > 1) {
-                    url = decodeURIComponent(url[1]);
-                } else {
-                    url = window.location.toString().replace(/\/*#?.*/, '/swagger.json');
-                }
+                var url = 'https://raw.githubusercontent.com/smooch/api-spec/readme-test/swagger.json';
 
                 window.swaggerUi = new SwaggerUi({
                     url: url,

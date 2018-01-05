@@ -15,9 +15,13 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     opts = opts || {};
     this.router = opts.router;
     this.auths = opts.auths;
+    this.language = opts.language;
     this.parentId = this.model.parentId;
     this.nickname = this.model.nickname;
     this.model.encodedParentId = encodeURIComponent(this.parentId);
+
+    this.language.bind('change', this.render.bind(this));
+
     return this;
   },
 
@@ -196,6 +200,10 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
       this.model.responseClassSignature = 'string';
       $('.model-signature', $(this.el)).append(this.model.type);
     }
+
+    // window[this.model.parentId][this.model.nickname].forEach(function(language) {
+
+    // });
 
     ref3 = this.model.parameters;
     for (n = 0, len2 = ref3.length; n < len2; n++) {

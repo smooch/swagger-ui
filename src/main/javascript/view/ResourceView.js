@@ -5,6 +5,7 @@ SwaggerUi.Views.ResourceView = Backbone.View.extend({
     opts = opts || {};
     this.router = opts.router;
     this.auths = opts.auths;
+    this.language = opts.language;
     if ('' === this.model.description) {
       this.model.description = null;
     }
@@ -52,7 +53,8 @@ SwaggerUi.Views.ResourceView = Backbone.View.extend({
       tagName: 'li',
       className: 'endpoint',
       swaggerOptions: this.options.swaggerOptions,
-      auths: this.auths
+      auths: this.auths,
+      language: this.language
     });
 
     $('.endpoints', $(this.el)).append(operationView.render().el);
