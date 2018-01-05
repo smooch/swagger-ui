@@ -1,5 +1,5 @@
 'use strict';
-// var snippetFetcher = require('./snippet_fetcher');
+var snippetFetcher = require('./snippet_fetcher');
 var gulp = require('gulp');
 var es = require('event-stream');
 var clean = require('gulp-clean');
@@ -51,8 +51,8 @@ function templates() {
 /**
  * Build a distribution
  */
-gulp.task('dist', ['clean'], function() {
-  // await snippetFetcher();
+gulp.task('dist', ['clean'], async function() {
+  await snippetFetcher();
 
   console.log('Finished writing snippets to dist/snippets.json');
 
