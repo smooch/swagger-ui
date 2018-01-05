@@ -117,6 +117,12 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
     // Render the outer container for resources
     $(this.el).html(Handlebars.templates.main(this.model));
 
+
+    // Render the language switcher
+    var language = new Backbone.Model({selected: 'java'});
+    var languageSwitcherView =  new SwaggerUi.Views.LanguageSwitcherView({model: language});
+    $('#language_switcher_container').append(languageSwitcherView.render().el);
+
     // Render each resource
 
     var resources = {};
@@ -132,7 +138,7 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
       resources[id] = resource;
       resource.nmbr = i;
 
-      this.addResource(resource, this.model.auths);
+      this.addResource(resource, this.model.auths, language);
       this.addSidebarHeader(resource, i);
     }
 
@@ -151,7 +157,7 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
     return this;
   },
 
-  addResource: function (resource, auths) {
+  addResource: function (resource, auths, language) {
     // Render a resource and add it to resources li
     resource.id = resource.id.replace(/\s/g, '_');
 
@@ -165,6 +171,7 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
       id: 'resource_' + resource.id,
       className: 'resource',
       auths: auths,
+      language: language,
       swaggerOptions: this.options.swaggerOptions
     });
     $('#resources').append(resourceView.render().el);

@@ -1480,17 +1480,61 @@ body {
     }
 }
 
+.language-switcher {
+    right: 0;
+    width: 50%;
+    z-index: 1;
+    height: 40px;
+    position: absolute;
+    background: #5c666f;
+}
+
 @media (min-width: 992px) {
     .swagger-section #resources_container {
         width: 100%;
-        padding-left: 290px
+        padding-left: 290px;
+    }
+
+    .language-switcher {
+        right: -145px;
     }
 }
 
 @media (min-width: 1400px) {
     .swagger-section #resources_container {
-        padding-left: 320px
+        padding-left: 320px;
     }
+
+    .language-switcher {
+        right: -160px;
+    }
+}
+
+.fixed .language-switcher {
+    top: 0;
+    position: fixed;
+}
+
+.language-switcher #menu {
+    margin: 0;
+    padding: 0;
+}
+
+.language-switcher #menu li {
+    display: inline;
+}
+
+.language-switcher #menu .language-button {
+    float: left;
+    height: 40px;
+    width: 100px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: .08em;
+    text-transform: uppercase;
 }
 
 .swagger-section .implementation-notes {
