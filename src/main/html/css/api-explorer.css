@@ -1481,11 +1481,12 @@ body {
 }
 
 .language-switcher {
+    top: 0;
     right: 0;
     width: 50%;
     z-index: 1;
     height: 40px;
-    position: absolute;
+    position: fixed;
     background: #5c666f;
 }
 
@@ -1508,11 +1509,6 @@ body {
     .language-switcher {
         right: -160px;
     }
-}
-
-.fixed .language-switcher {
-    top: 0;
-    position: fixed;
 }
 
 .language-switcher #menu {

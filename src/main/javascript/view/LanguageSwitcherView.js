@@ -12,14 +12,6 @@ SwaggerUi.Views.LanguageSwitcherView = Backbone.View.extend({
     this.model.bind('change', this.render.bind(this));
   },
 
-  onScroll: function() {
-    if (window.pageYOffset >= 95) {
-      $(this.el).addClass('fixed');
-    } else {
-      $(this.el).removeClass('fixed');
-    }
-  },
-
   clickLanguageButton: function (e) {
     var clickedEl = $(e.target);
     this.model.set('selected', clickedEl.text().toLowerCase())
