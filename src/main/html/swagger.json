@@ -6,6 +6,10 @@
     "title" : "Smooch"
   },
   "host" : "api.smooch.io",
+  "tags" : [ {
+    "name" : "AppUser",
+    "description" : "The app user object represents an end user using your app. The app user document contains basic profile information such as `givenName`, `surname`, and `email`, as well as any custom user properties you choose to configure.\nThe `/v1/apps/{appId}/appusers` path gives you APIs that can be used to update the user's properties, retrieve conversation history, post a message, and track app user events.\n\n## userId\n\nApp users may be created with an optional `userId` parameter. This is a unique identifier that is chosen by the API consumer and it can be used to associate Smooch users with an external user directory, and to synchronize a single conversation across multiple clients. To understand how this works, see the section covering [user authentication](/guide/authenticating-users)."
+  } ],
   "basePath" : "/v1",
   "schemes" : [ "https" ],
   "consumes" : [ "application/json" ],

@@ -181,19 +181,24 @@ header.site-header.site-header{
 .response-content-type{
 	display:none;
 }
-.swagger-section h2.operation-title {
+.swagger-section h2.operation-title, .swagger-section h1.resource-name, .swagger-section .resource h2 {
     letter-spacing: -0.02em;
     color: #373352;
     font-weight:500;
 }
 @media (min-width: 992px) {
-    .swagger-section h2.operation-title {
+    .swagger-section h2.operation-title, .swagger-section .resource h2 {
         font-size: 32px;
+        font-weight: 500;
+    }
+
+    .swagger-section h1.resource-name {
+        font-size: 36px;
         font-weight: 500;
     }
 }
 @media (min-width: 1800px) {
-    .swagger-section h2.operation-title {
+    .swagger-section h2.operation-title, .swagger-section h1.resource-name, .swagger-section .resource h2 {
         float:left;
     }
     .swagger-section .swagger-ui-wrap ul#resources li.resource ul.endpoints li.endpoint ul.operations li.operation div.heading h3{
