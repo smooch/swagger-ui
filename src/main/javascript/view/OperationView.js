@@ -178,13 +178,6 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     $(this.el).html(Handlebars.templates.operation(this.model));
 
     ref4 = this.model.parameters;
-    for (p = 0, len3 = ref4.length; p < len3; p++) {
-      param = ref4[p];
-      this.addParameter(param, contentTypeModel.consumes);
-      if (param.paramType === 'body' || param.in === 'body') {
-        this.addBodyModel(param)
-      }
-    }
 
     var classDef = window.snippetData && window.snippetData[this.parentId];
     var methodDefs = classDef && classDef[this.nickname] || [];
@@ -201,7 +194,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
         var snippetId = this.parentId + '_' + this.nickname + '_snippet';
         var snippetSignatureView = new SwaggerUi.Views.SnippetView({
           model: {
-            id: snippetDef.className,
+            id: snippetId,
             type: snippetDef.method,
             hlId: language,
             language: language,
@@ -230,6 +223,14 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     showSnippet();
     this.language.bind('change', showSnippet);
 
+    for (p = 0, len3 = ref4.length; p < len3; p++) {
+      param = ref4[p];
+      this.addParameter(param, contentTypeModel.consumes);
+      if (param.paramType === 'body' || param.in === 'body') {
+        this.addBodyModel(param)
+      }
+    }
+    
     if (signatureModel) {
       responseSignatureView = new SwaggerUi.Views.SignatureView({
         model: signatureModel,

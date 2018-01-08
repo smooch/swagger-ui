@@ -58,6 +58,12 @@ pre,
 samp {
     font-family: Consolas, "RobotoMono", Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
 }
+code {
+    padding: 3px 4px 2px 4px;
+    color: #464a5c;
+    background-color: #edeef5;
+    border-radius: 3px;
+}
 label {
     font-weight: 400;
 }
@@ -129,6 +135,10 @@ header.site-header.site-header{
     padding: 12px 28px;
     line-height: 30px;
     font-weight: 400;
+    transition:background 0.15s ease-out;
+}
+.language-switcher #menu .language-button:hover{
+    background-color:#221f3b;
 }
 .language-switcher #menu .language-button.selected {
     background: #373352;
@@ -557,6 +567,23 @@ pre {
     cursor:default;
 }
 /* Left Column */
+.swagger-section .token-generator .btn {
+    background: #e6e7f0;
+    transition:background 0.15s ease-out;
+}
+.swagger-section .token-generator .btn:hover {
+    background: #dedfe8;
+}
+@media (min-width: 992px) {
+    .swagger-section .token-generator .btn {
+        border:none;
+    }
+}
+.swagger-section .token-generator .btn > span:before{
+    color:#464a5c;
+    font-weight:600 !important;
+
+}
 @media (min-width: 992px) {
     .swagger-section .parameter-item .param-property:hover {
         background: #f6f7fa;
@@ -775,4 +802,45 @@ pre {
 }
 #api2-explorer .modal .modal-dialog .modal-body {
     padding-top:0;
+}
+/* Syntax hilighting */
+.hljs{
+    display:block;
+    overflow-x:auto;
+    padding:0.5em;
+    background:#002b36;
+    color:#839496
+}
+.hljs-comment,.hljs-quote{
+    color:#767e8c;
+}
+.hljs-keyword,.hljs-selector-tag,.hljs-addition{
+    color:#eae96b;
+}
+.hljs-number,.hljs-string,.hljs-meta .hljs-meta-string,.hljs-doctag,.hljs-regexp{
+    color:#9ab4ff;
+}
+.hljs-literal{
+    color:#ffbbf5;
+}
+.hljs-title,.hljs-section,.hljs-name,.hljs-selector-id,.hljs-selector-class{
+    color:#268bd2
+}
+.hljs-attribute,.hljs-attr,.hljs-variable,.hljs-template-variable,.hljs-class .hljs-title,.hljs-type{
+    color:#51d3c8
+}
+.hljs-symbol,.hljs-bullet,.hljs-subst,.hljs-meta,.hljs-meta .hljs-keyword,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-link{
+    color:#cb4b16
+}
+.hljs-built_in,.hljs-deletion{
+    color:#dc322f
+}
+.hljs-formula{
+    background:#073642
+}
+.hljs-emphasis{
+    font-style:italic;
+}
+.hljs-strong{
+    font-weight:500;
 }
